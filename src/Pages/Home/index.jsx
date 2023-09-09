@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { Card } from "../../Components/Card"
+import { ProductDetail } from "../../Components/ProductDetail"
 
 const API_URL = 'https://fakestoreapi.com'
 
@@ -35,6 +36,7 @@ function Home() {
           />
         ))}
       </div>
+      <ProductDetail />
     </div>
   )
 }
