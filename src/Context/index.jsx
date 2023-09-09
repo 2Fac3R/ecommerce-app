@@ -10,6 +10,8 @@ export function ShoppingCartProvider({ children }) {
   const productDetailToggle = () => setIsProductDetailOpen(!isProductDetailOpen)
   // ProductDetail - Show product
   const [productDetails, setProductDetails] = useState({})
+  // Shopping Cart - Add products to cart
+  const [cartProducts, setCartProducts] = useState([{}])
 
 
   return (
@@ -21,6 +23,8 @@ export function ShoppingCartProvider({ children }) {
       productDetailToggle,
       productDetails,
       setProductDetails,
+      cartProducts,
+      setCartProducts,
     }}>
       {children}
     </ShoppingCartContext.Provider>
