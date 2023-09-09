@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { Card } from "../../Components/Card"
 
-const API_URL = 'https://api.escuelajs.co/api/v1'
+const API_URL = 'https://fakestoreapi.com'
 
 function Home() {
   const [products, setProducts] = useState([])
@@ -27,7 +27,7 @@ function Home() {
 
   return (
     <div className="Home">
-      <div className="grid gap-4 grid-cols-4 w-full max-w-screen-lg">
+      <div className="grid w-full max-w-screen-lg grid-cols-4 gap-6 mr-2">
         {products.map((product) => (
           <Card
             key={product.id}

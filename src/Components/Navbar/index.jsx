@@ -1,102 +1,90 @@
 import { NavLink } from 'react-router-dom'
 
+const leftMenu = [
+  {
+    to: '/',
+    text: 'All',
+  },
+  {
+    to: '/clothes',
+    text: 'Clothes',
+  },
+  {
+    to: '/electronics',
+    text: 'Electronics',
+  },
+  {
+    to: '/fornitures',
+    text: 'Fornitures',
+  },
+  {
+    to: '/toys',
+    text: 'Toys',
+  },
+  {
+    to: '/others',
+    text: 'Others',
+  },
+]
+
+const rightMenu = [
+  {
+    to: '/email',
+    text: 'genr1818@gmail.com',
+  },
+  {
+    to: '/my-orders',
+    text: 'My Orders',
+  },
+  {
+    to: '/my-account',
+    text: 'My Account',
+  },
+  {
+    to: '/sign-in',
+    text: 'Sign In',
+  },
+  {
+    to: '/cart',
+    text: '[]',
+  },
+]
+
 function NavBar() {
   const activeStyle = 'underline underline_offset_4'
 
   return (
-    <nav className='flex justify-between items-center top-0 fixed z-10 w-full py-5 px-8 text-sm font-light'>
+    <nav className='fixed top-0 z-10 flex items-center justify-between w-full px-8 py-5 text-sm font-light bg-white'>
       <ul className='flex items-center gap-4'>
-        <li className='font-semibold text-lg'>
+        <li className='text-lg font-semibold'>
           <NavLink to=''>
             Shopi
           </NavLink>
         </li>
-        <li>
-          <NavLink
-            to=''
-            className={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            }>
-            All
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/clothes'
-            className={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            }>
-            Clothes
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/electronics'
-            className={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            }>
-            Electronics
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/fornitures'
-            className={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            }>
-            Fornitures
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/toys'
-            className={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            }>
-            Toys
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to='/others'
-            className={({ isActive }) =>
-              isActive ? activeStyle : undefined
-            }>
-            Others
-          </NavLink>
-        </li>
+        {leftMenu.map((item) =>
+          <li key={item.text}>
+            <NavLink
+              to={item.to}
+              className={({ isActive }) =>
+                isActive ? activeStyle : undefined
+              }>
+              {item.text}
+            </NavLink>
+          </li>
+        )}
       </ul>
       <ul className='flex items-center gap-4'>
-        <li>
-          <NavLink to='/email' className='text-black/60'>
-            genr1818@gmail.com
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/my-orders' className={({ isActive }) =>
-            isActive ? activeStyle : undefined
-          }>
-            My Orders
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/my-account' className={({ isActive }) =>
-            isActive ? activeStyle : undefined
-          }>
-            My Account
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-in' className={({ isActive }) =>
-            isActive ? activeStyle : undefined
-          }>
-            Sign In
-          </NavLink>
-        </li>
-        <li>
-          [0]
-          {/* Carrito Icon */}
-        </li>
+        {rightMenu.map((item) =>
+          <li key={item.text}>
+            <NavLink
+              to={item.to}
+              className={({ isActive }) =>
+                isActive ? activeStyle : undefined
+              }>
+              {item.text}
+            </NavLink>
+          </li>
+        )}
       </ul>
     </nav>
   )
