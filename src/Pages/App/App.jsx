@@ -3,6 +3,7 @@ import { ShoppingCartProvider } from '../../Context'
 
 import { NavBar } from '../../Components/Navbar'
 import { Layout } from '../../Components/LayOut'
+import { CheckOutSideMenu } from "../../Components/CheckOutSideMenu"
 import { Home } from '../Home'
 import { MyAccount } from '../MyAccount'
 import { MyOrder } from '../MyOrder'
@@ -33,6 +34,7 @@ function App() {
         <Layout>
           <AppRoutes />
         </Layout>
+        <CheckOutSideMenu />
       </BrowserRouter>
     </ShoppingCartProvider>
   )
