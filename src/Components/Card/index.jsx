@@ -2,11 +2,17 @@ import { useContext } from "react"
 import { ShoppingCartContext } from "../../Context"
 import { PlusIcon } from '@heroicons/react/24/solid'
 
-function Card({ title, price, image, category }) {
-  const { count, setCount } = useContext(ShoppingCartContext)
+function Card({ title, price, image, category, description }) {
+  const { count, setCount, setIsProductDetailOpen, setProductDetails } = useContext(ShoppingCartContext)
 
+  const showProduct = (product) => {
+    setIsProductDetailOpen(true)
+    setProductDetails(product)
+  }
   return (
-    <div className="w-56 bg-white rounded-lg cursor-pointer h-60">
+    <div
+      onClick={() => showProduct({ title, price, image, category, description })}
+      className="w-56 bg-white rounded-lg cursor-pointer h-60">
       <figure className="relative w-full mb-2 h-4/5">
         <span className="absolute bottom-0 left-0 bg-while/60 rounded-lg bg-white text-black text-xs m-2 px-2 py-0.5">
           {category}
@@ -16,7 +22,7 @@ function Card({ title, price, image, category }) {
           src={image}
           alt={title} />
         <button
-          onClick={() => setCount(count + 1)}
+          onClick={(e) => { e.stopPropagation(); setCount(count + 1); }}
           className="absolute top-0 right-0 flex items-center justify-center w-6 h-6 p-1 m-2 truncate bg-white rounded-full">
           <PlusIcon className="w-6 h-6 text-black"></PlusIcon>
         </button>
