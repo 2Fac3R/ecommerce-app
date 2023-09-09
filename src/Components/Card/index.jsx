@@ -5,14 +5,14 @@ import { PlusIcon } from '@heroicons/react/24/solid'
 function Card({ title, price, image, category, description }) {
   const {
     count, setCount,
-    setIsProductDetailOpen,
+    openProductDetail,
     setProductDetails,
     cartProducts,
     setCartProducts,
   } = useContext(ShoppingCartContext)
 
   const showProduct = (product) => {
-    setIsProductDetailOpen(true)
+    openProductDetail()
     setProductDetails(product)
   }
 

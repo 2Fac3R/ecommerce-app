@@ -5,14 +5,14 @@ import { XMarkIcon } from '@heroicons/react/24/solid'
 import './styles.css'
 
 function ProductDetail() {
-  const { isProductDetailOpen, setIsProductDetailOpen, productDetails } = useContext(ShoppingCartContext)
+  const { isProductDetailOpen, closeProductDetail, productDetails } = useContext(ShoppingCartContext)
   return (
     <>
       {isProductDetailOpen && (
         <aside className="fixed right-0 flex flex-col overflow-auto bg-white border border-black rounded-lg product-detail">
           <div className='flex items-center justify-between p-6'>
             <h2 className='text-xl font-medium'>Detail</h2>
-            <div onClick={() => setIsProductDetailOpen(false)}>
+            <div onClick={() => closeProductDetail()}>
               <XMarkIcon className="w-6 h-6 text-black cursor-pointer"></XMarkIcon>
             </div>
           </div>
