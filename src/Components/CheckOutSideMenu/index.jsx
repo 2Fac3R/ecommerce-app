@@ -8,10 +8,19 @@ import './styles.css'
 
 function CheckOutSideMenu() {
   const {
+    count,
+    setCount,
     isCheckOutSideMenuOpen,
     closeCheckOutSideMenu,
-    cartProducts
+    cartProducts,
+    setCartProducts
   } = useContext(ShoppingCartContext)
+
+  const handleDelete = (id) => {
+    const filteredProducts = cartProducts.filter((product) => product.id !== id)
+    setCartProducts(filteredProducts)
+    setCount(count - 1)
+  }
 
   return (
     <>
@@ -27,9 +36,11 @@ function CheckOutSideMenu() {
             {cartProducts.map((product) => (
               <OrderCard
                 key={product.id}
+                id={product.id}
                 title={product.title}
                 imageUrl={product.image}
                 price={product.price}
+                handleDelete={handleDelete}
               />
             ))}
           </div>
