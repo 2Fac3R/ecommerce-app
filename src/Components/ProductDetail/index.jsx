@@ -1,11 +1,17 @@
 import { useContext } from 'react'
 import { ShoppingCartContext } from '../../Context'
+
 import { XMarkIcon } from '@heroicons/react/24/solid'
 
 import './styles.css'
 
 function ProductDetail() {
-  const { isProductDetailOpen, closeProductDetail, productDetails } = useContext(ShoppingCartContext)
+  const {
+    isProductDetailOpen,
+    closeProductDetail,
+    productDetails
+  } = useContext(ShoppingCartContext)
+
   return (
     <>
       {isProductDetailOpen && (
@@ -27,8 +33,8 @@ function ProductDetail() {
               <span className='text-sm font-light'>{productDetails.description}</span>
             </p>
           </figure>
-        </aside>)
-      }
+        </aside>
+      )}
     </>
   )
 }
