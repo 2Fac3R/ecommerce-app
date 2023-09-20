@@ -5,7 +5,7 @@ import { ShoppingCartContext } from '../../Context'
 
 
 function NavBar() {
-  const { count } = useContext(ShoppingCartContext)
+  const { count, openCheckOutSideMenu } = useContext(ShoppingCartContext)
 
   const leftMenu = [
     {
@@ -89,9 +89,11 @@ function NavBar() {
 
         <li>
           <NavLink
-            to='/cart'
+            to=''
             className='flex items-center'>
-            <ShoppingBagIcon className="w-6 h-6 text-black"></ShoppingBagIcon>
+            <ShoppingBagIcon
+              onClick={() => openCheckOutSideMenu()}
+              className="w-6 h-6 text-black"></ShoppingBagIcon>
             <span>{count}</span>
           </NavLink>
         </li>
