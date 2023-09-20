@@ -1,10 +1,10 @@
 import { useContext } from "react"
 import { ShoppingCartContext } from "../../Context"
 
-import { PlusIcon } from '@heroicons/react/24/solid'
+import { PlusIcon, CheckIcon } from '@heroicons/react/24/solid'
 
 function Card(props) {
-  const { title, price, image, category } = props
+  const { id, title, price, image, category } = props
   const {
     count,
     setCount,
@@ -31,6 +31,24 @@ function Card(props) {
     openCheckOutSideMenu()
   }
 
+  const renderIcon = (id) => {
+    const isInCart = cartProducts.some(product => product.id === id)
+    return (
+      isInCart ? (
+        <button
+          className="absolute top-0 right-0 flex items-center justify-center w-6 h-6 p-1 m-2 truncate bg-white rounded-full">
+          <CheckIcon className="w-6 h-6 text-black"></CheckIcon>
+        </button>
+      ) : (
+        <button
+          onClick={(e) => addProductToCart(e, props)}
+          className="absolute top-0 right-0 flex items-center justify-center w-6 h-6 p-1 m-2 truncate bg-white rounded-full">
+          <PlusIcon className="w-6 h-6 text-black"></PlusIcon>
+        </button>
+      )
+    )
+  }
+
   return (
     <div
       onClick={() => showProduct(props)}
@@ -43,11 +61,7 @@ function Card(props) {
           className="object-cover w-full h-full rounded-lg"
           src={image}
           alt={title} />
-        <button
-          onClick={(e) => addProductToCart(e, props)}
-          className="absolute top-0 right-0 flex items-center justify-center w-6 h-6 p-1 m-2 truncate bg-white rounded-full">
-          <PlusIcon className="w-6 h-6 text-black"></PlusIcon>
-        </button>
+        {renderIcon(id)}
       </figure>
       <p className="flex justify-between">
         <span className="text-sm font-light">{title}</span>
