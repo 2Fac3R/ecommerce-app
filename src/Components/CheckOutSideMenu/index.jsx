@@ -10,10 +10,8 @@ import './styles.css'
 
 function CheckOutSideMenu() {
   const {
-    count,
-    setCount,
-    isCheckOutSideMenuOpen,
-    closeCheckOutSideMenu,
+    isCheckoutSideMenuOpen,
+    closeCheckoutSideMenu,
     cartProducts,
     setCartProducts,
     order,
@@ -23,29 +21,28 @@ function CheckOutSideMenu() {
   const handleDelete = (id) => {
     const filteredProducts = cartProducts.filter((product) => product.id !== id)
     setCartProducts(filteredProducts)
-    setCount(count - 1)
   }
 
   const handleCheckout = () => {
     const orderToAdd = {
       date: '',
-      products: cartProducts,
+      items: cartProducts,
       totalProducts: cartProducts.length,
       totalPrice: totalPrice(cartProducts)
     }
 
     setOrder([...order, orderToAdd])
     setCartProducts([])
-    closeCheckOutSideMenu()
+    closeCheckoutSideMenu()
   }
 
   return (
     <>
-      {isCheckOutSideMenuOpen && (
+      {isCheckoutSideMenuOpen && (
         <aside className="fixed right-0 flex flex-col overflow-auto bg-white border border-black rounded-lg checkout-side-menu">
           <div className='flex items-center justify-between p-6'>
             <h2 className='text-xl font-medium'>My Order</h2>
-            <div onClick={() => closeCheckOutSideMenu()}>
+            <div onClick={() => closeCheckoutSideMenu()}>
               <XMarkIcon className="w-6 h-6 text-black cursor-pointer"></XMarkIcon>
             </div>
           </div>
@@ -64,7 +61,7 @@ function CheckOutSideMenu() {
           <div className='px-6 mb-6'>
             <p className='flex items-center justify-between mb-2'>
               <span className='font-light'>Total:</span>
-              <span className='text-2xl font-medium'>${totalPrice(cartProducts)}</span>
+              <span className='text-2xl font-medium'>${totalPrice(cartProducts).toFixed(2)}</span>
             </p>
             <Link to='/my-orders/last'>
               <button

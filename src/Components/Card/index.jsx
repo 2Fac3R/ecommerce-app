@@ -6,29 +6,26 @@ import { PlusIcon, CheckIcon } from '@heroicons/react/24/solid'
 function Card(props) {
   const { id, title, price, image, category } = props
   const {
-    count,
-    setCount,
     openProductDetail,
     closeProductDetail,
-    setProductDetails,
+    setProductToShow,
     cartProducts,
     setCartProducts,
-    openCheckOutSideMenu,
-    closeCheckOutSideMenu,
+    openCheckoutSideMenu,
+    closeCheckoutSideMenu,
   } = useContext(ShoppingCartContext)
 
-  const showProduct = (product) => {
-    closeCheckOutSideMenu()
+  const showProduct = (productDetail) => {
+    closeCheckoutSideMenu()
     openProductDetail()
-    setProductDetails(product)
+    setProductToShow(productDetail)
   }
 
-  const addProductToCart = (e, product) => {
-    e.stopPropagation()
-    setCount(count + 1)
-    setCartProducts([...cartProducts, product])
+  const addProductToCart = (event, productData) => {
+    event.stopPropagation()
+    setCartProducts([...cartProducts, productData])
+    openCheckoutSideMenu()
     closeProductDetail()
-    openCheckOutSideMenu()
   }
 
   const renderIcon = (id) => {

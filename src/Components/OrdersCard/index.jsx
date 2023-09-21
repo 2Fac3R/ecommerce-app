@@ -11,7 +11,7 @@ export const OrdersCard = (props) => {
           <span className='font-light'>{totalProducts} articles</span>
         </p>
         <p className='flex items-center gap-2'>
-          <span className='text-2xl font-medium'>${totalPrice}</span>
+          <span className='text-2xl font-medium'>${totalPrice.toFixed(2)}</span>
           <ChevronRightIcon className='w-6 h-6 text-black cursor-pointer' />
         </p>
       </div>

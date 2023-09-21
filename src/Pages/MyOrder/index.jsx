@@ -22,7 +22,7 @@ function MyOrder() {
         <h1 className='text-xl font-medium'>My Order</h1>
       </div>
       <div className='flex flex-col w-80'>
-        {order?.[index]?.products?.map(product => (
+        {order?.[index]?.items?.map(product => (
           <OrderCard
             key={product.id}
             id={product.id}

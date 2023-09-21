@@ -9,7 +9,7 @@ function ProductDetail() {
   const {
     isProductDetailOpen,
     closeProductDetail,
-    productDetails
+    productToShow
   } = useContext(ShoppingCartContext)
 
   return (
@@ -25,12 +25,12 @@ function ProductDetail() {
           <figure className='px-6'>
             <img
               className='object-cover w-full h-full rounded-lg'
-              src={productDetails.image}
-              alt={productDetails.title} />
+              src={productToShow.image}
+              alt={productToShow.title} />
             <p className='flex flex-col p-6'>
-              <span className='text-2xl font-medium'>${productDetails.price}</span>
-              <span className='font-medium text-md'>{productDetails.title}</span>
-              <span className='text-sm font-light'>{productDetails.description}</span>
+              <span className='text-2xl font-medium'>${productToShow.price}</span>
+              <span className='font-medium text-md'>{productToShow.title}</span>
+              <span className='text-sm font-light'>{productToShow.description}</span>
             </p>
           </figure>
         </aside>

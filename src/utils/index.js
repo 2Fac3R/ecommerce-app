@@ -1,8 +1,8 @@
 /**
- * Returns the total price of a new order for cart products
- * @param {Array} products cartProducts
+ * Returns the total price of a new order for cart items
+ * @param {Array} items cartProducts
  * @returns {Number} sum of product prices
  */
-export const totalPrice = (products) => {
-  return products.reduce((sum, product) => sum + product.price, 0)
+export const totalPrice = (items) => {
+  return items.reduce((sum, product) => sum + product.price, 0)
 }
