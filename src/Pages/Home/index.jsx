@@ -1,4 +1,5 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
+import { useParams } from "react-router-dom"
 import { ShoppingCartContext } from "../../Context"
 
 import { Card } from "../../Components/Card"
@@ -6,6 +7,11 @@ import { ProductDetail } from "../../Components/ProductDetail"
 
 export function Home() {
   const context = useContext(ShoppingCartContext)
+  const { category } = useParams()
+
+  useEffect(() => {
+    if (category?.length > 0) context.setSearchByCategory(category.toLowerCase())
+  }, [category])
 
   const renderView = () => {
     if (context.filteredItems?.length > 0) {

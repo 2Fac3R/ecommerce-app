@@ -5,38 +5,30 @@ import { ShoppingCartContext } from '../../Context'
 
 
 function NavBar() {
-  const { cartProducts, openCheckoutSideMenu } = useContext(ShoppingCartContext)
+  const context = useContext(ShoppingCartContext)
 
   const leftMenu = [
-    {
-      to: '/',
-      text: 'All',
-    },
-    {
-      to: '/clothes',
-      text: 'Clothes',
-    },
     {
       to: '/electronics',
       text: 'Electronics',
     },
     {
-      to: '/fornitures',
-      text: 'Fornitures',
+      to: '/jewelery',
+      text: 'Jewelery',
     },
     {
-      to: '/toys',
-      text: 'Toys',
+      to: '/men\'s clothing',
+      text: 'Men\'s clothing',
     },
     {
-      to: '/others',
-      text: 'Others',
+      to: '/women\'s clothing',
+      text: 'Women\'s clothing',
     },
   ]
 
   const rightMenu = [
     {
-      to: '/email',
+      to: 'mailto:genr1818@gmail.com',
       text: 'genr1818@gmail.com',
     },
     {
@@ -58,14 +50,26 @@ function NavBar() {
     <nav className='fixed top-0 z-10 flex items-center justify-between w-full px-8 py-5 text-sm font-light bg-white'>
       <ul className='flex items-center gap-4'>
         <li className='text-lg font-semibold'>
-          <NavLink to=''>
+          <NavLink
+            to=''
+            onClick={() => context.setSearchByCategory()}
+          >
             Shopi
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to=''
+            onClick={() => context.setSearchByCategory()}
+          >
+            All
           </NavLink>
         </li>
         {leftMenu.map((item) =>
           <li key={item.text}>
             <NavLink
               to={item.to}
+              onClick={() => context.setSearchByCategory(item.text.toLowerCase())}
               className={({ isActive }) =>
                 isActive ? activeStyle : undefined
               }>
@@ -89,12 +93,12 @@ function NavBar() {
 
         <li>
           <NavLink
-            to=''
+            to='#'
+            onClick={() => context.openCheckoutSideMenu()}
             className='flex items-center'>
             <ShoppingBagIcon
-              onClick={() => openCheckoutSideMenu()}
               className="w-6 h-6 text-black"></ShoppingBagIcon>
-            <span>{cartProducts.length}</span>
+            <span>{context.cartProducts.length}</span>
           </NavLink>
         </li>
       </ul>
