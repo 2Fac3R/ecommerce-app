@@ -22,7 +22,7 @@ export function Home() {
   }
 
   return (
-    <div className="Home">
+    <>
       <div className='relative flex items-center justify-center mb-4 w-80'>
         <h1 className='text-xl font-medium'>Exclusive Products</h1>
       </div>
@@ -35,6 +35,6 @@ export function Home() {
         {renderView()}
       </div>
       <ProductDetail />
-    </div>
+    </>
   )
 }
