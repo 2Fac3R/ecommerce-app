@@ -1,30 +1,11 @@
-import { useState, useEffect } from "react"
+import { useContext } from "react"
+import { ShoppingCartContext } from "../../Context"
+
 import { Card } from "../../Components/Card"
 import { ProductDetail } from "../../Components/ProductDetail"
 
-const API_URL = 'https://fakestoreapi.com'
-
 function Home() {
-  const [products, setProducts] = useState([])
-
-  // useEffect(() => {
-  //   fetch(`${API_URL}/products`)
-  //     .then(response => response.json())
-  //     .then(data => setProducts(data))
-  // }, [])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${API_URL}/products`)
-        const data = await response.json()
-        setProducts(data)
-      } catch (error) {
-        console.error(`Error: ${error}`);
-      }
-    }
-    fetchData()
-  }, [])
+  const { products } = useContext(ShoppingCartContext)
 
   return (
     <div className="Home">

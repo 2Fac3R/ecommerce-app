@@ -1,5 +1,6 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 
+export const API_URL = 'https://fakestoreapi.com'
 export const ShoppingCartContext = createContext()
 
 export function ShoppingCartProvider({ children }) {
@@ -25,6 +26,22 @@ export function ShoppingCartProvider({ children }) {
   // Shopping Cart - Order
   const [order, setOrder] = useState([])
 
+  // Get products
+  const [products, setProducts] = useState([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(`${API_URL}/products`)
+        const data = await response.json()
+        setProducts(data)
+      } catch (error) {
+        console.error(`Error: ${error}`);
+      }
+    }
+    fetchData()
+  }, [])
+
   return (
     <ShoppingCartContext.Provider value={{
       count,
@@ -40,7 +57,9 @@ export function ShoppingCartProvider({ children }) {
       openCheckOutSideMenu,
       closeCheckOutSideMenu,
       order,
-      setOrder
+      setOrder,
+      products,
+      setProducts
     }}>
       {children}
     </ShoppingCartContext.Provider>
